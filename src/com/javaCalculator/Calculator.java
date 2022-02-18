@@ -57,7 +57,7 @@ public class Calculator implements KeyListener, ActionListener {
     double temp;
     double memory;
     char operator;
-    ImageIcon icon = new ImageIcon("D:\\java codes\\media\\icon.png");
+    ImageIcon icon = new ImageIcon("D:\\java_codes\\media\\icon.png");
     Calculator() {
 
 
