@@ -39,7 +39,7 @@ public class AboutFrame  {
             public void mouseClicked(MouseEvent e){
                 try {
                     //opens the default browser and passes the uri to that .
-                    Desktop.getDesktop().browse(new URI("http://www.codejava.net"));
+                    Desktop.getDesktop().browse(new URI("https://stackoverflow.com/users/13074882/siavosh-noor"));
                 } catch (IOException | URISyntaxException ex) {
                     ex.printStackTrace();
                 }
@@ -70,7 +70,7 @@ public class AboutFrame  {
             public void mouseClicked(MouseEvent e){
                 try {
                     //opens the default browser and passes the uri to that .
-                    Desktop.getDesktop().browse(new URI("http://www.codejava.net"));
+                    Desktop.getDesktop().browse(new URI("https://github.com/SiavashNoor/Java-Calculator"));
                 } catch (IOException | URISyntaxException ex) {
                     ex.printStackTrace();
                 }
