@@ -49,6 +49,9 @@ public class Calculator implements KeyListener, ActionListener {
     JMenuItem ItemModeScientific;
     JMenuItem aboutItem;
 
+    ActionListener actionListener;
+
+
 
     Font font = new Font("helvetica", Font.BOLD, 30);
 
@@ -69,6 +72,7 @@ public class Calculator implements KeyListener, ActionListener {
             numberButtons[i].addActionListener(this);
             numberButtons[i].setFocusable(false);
         }
+
 
         for (int i = 0; i < 6; i++) {
             functionButtons[i] = new JButton();
@@ -249,6 +253,14 @@ public class Calculator implements KeyListener, ActionListener {
         panel.add(equButton);
         panel.add(addButton);
 
+
+        actionListener = new NumButtListener(numberButtons,  textField);
+        for (int i = 0; i < 10; i++) {
+            numberButtons[i].addActionListener(actionListener);
+        }
+
+
+
         frame = new JFrame();
         frame.setTitle("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -266,19 +278,44 @@ public class Calculator implements KeyListener, ActionListener {
         frame.add(memoryFunctionPanel);
         frame.add(panel);
 
-        frame.setVisible(true);
-    }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        frame.setVisible(true);
+
+
+
+
+
+    }
+/////////////////////////////////////////////////////////
     //@Override
     public void actionPerformed(ActionEvent e) {
         System.out.println(e.getSource());
         System.out.println(frame.isFocused());
-
+/*
         for (int i = 0; i < 10; i++) {
             if (e.getSource() == numberButtons[i]) {
                 textField.setText(textField.getText() + i);
             }
         }
+
+ */
         if (e.getSource() == addButton) {
 
             num1 = Double.parseDouble(textField.getText());
