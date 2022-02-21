@@ -267,8 +267,6 @@ public class Calculator implements KeyListener, ActionListener {
         frame.add(panel);
 
         frame.setVisible(true);
-
-
     }
 
     //@Override
