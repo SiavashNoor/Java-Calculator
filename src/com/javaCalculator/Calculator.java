@@ -69,7 +69,6 @@ public class Calculator implements KeyListener, ActionListener {
             numberButtons[i] = new JButton(String.valueOf(i));
             numberButtons[i].setFont(font);
             numberButtons[i].setBackground(new Color(130, 130, 130));
-            numberButtons[i].addActionListener(this);
             numberButtons[i].setFocusable(false);
         }
 
@@ -78,7 +77,7 @@ public class Calculator implements KeyListener, ActionListener {
             functionButtons[i] = new JButton();
             functionButtons[i].setFont(font);
             functionButtons[i].setBackground(new Color(227, 84, 23));
-            functionButtons[i].addActionListener(this);
+
             functionButtons[i].setFocusable(false);
 
         }
@@ -87,7 +86,6 @@ public class Calculator implements KeyListener, ActionListener {
             memoryFunctionButtons[i] = new JButton();
             memoryFunctionButtons[i].setFont(new Font("helvetica", Font.BOLD, 20));
             memoryFunctionButtons[i].setBackground(new Color(222, 37, 4));
-            memoryFunctionButtons[i].addActionListener(this);
             memoryFunctionButtons[i].setFocusable(false);
             memoryFunctionButtons[i].setBorder(null);
         }
@@ -259,6 +257,18 @@ public class Calculator implements KeyListener, ActionListener {
             numberButtons[i].addActionListener(actionListener);
         }
 
+        actionListener= new FuncButtListener(functionButtons,textField);
+        for(int i=0;i<6;i++){
+            functionButtons[i].addActionListener(actionListener);
+        }
+        actionListener = new MemoryButtListener(memoryFunctionButtons,textField);
+        for(int i = 0;i<5;i++){
+            memoryFunctionButtons[i].addActionListener(actionListener);
+        }
+
+
+
+
 
 
         frame = new JFrame();
@@ -280,27 +290,7 @@ public class Calculator implements KeyListener, ActionListener {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         frame.setVisible(true);
-
-
-
-
 
     }
 /////////////////////////////////////////////////////////
@@ -315,9 +305,8 @@ public class Calculator implements KeyListener, ActionListener {
             }
         }
 
- */
-        if (e.getSource() == addButton) {
 
+        if (e.getSource() == addButton) {
             num1 = Double.parseDouble(textField.getText());
             textField.setText("");
             System.out.println(num1);
@@ -348,6 +337,8 @@ public class Calculator implements KeyListener, ActionListener {
             textField.setText(textField.getText() + ".");
 
         }
+
+
         if (e.getSource() == clearButton) {
             textField.setText("");
 
@@ -371,6 +362,8 @@ public class Calculator implements KeyListener, ActionListener {
                 textField.setText("");
             }
         }
+
+ */
 
         //scientific buttons  listeners
         if (e.getSource() == numberPowerOfNumber) {
