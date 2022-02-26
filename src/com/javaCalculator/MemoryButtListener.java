@@ -5,10 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MemoryButtListener implements ActionListener {
-    JTextField textField ;
-    JButton deleteButton, clearButton,memorySave,memoryClear,memoryLoad ;
+    JTextField textField;
+    JButton deleteButton, clearButton, memorySave, memoryClear, memoryLoad;
     double memory;
-    MemoryButtListener (JButton[] memoryFunctionButtons ,JTextField textField){
+
+    MemoryButtListener(JButton[] memoryFunctionButtons, JTextField textField) {
         this.deleteButton = memoryFunctionButtons[0];
         this.clearButton = memoryFunctionButtons[1];
         this.memorySave = memoryFunctionButtons[2];
@@ -18,7 +19,6 @@ public class MemoryButtListener implements ActionListener {
 
 
     }
-
 
 
     @Override
@@ -32,6 +32,8 @@ public class MemoryButtListener implements ActionListener {
         }
         if (e.getSource() == memorySave) {
             memory = Double.parseDouble(textField.getText());
+            textField.setText("");
+
         }
 
         if (e.getSource() == memoryLoad) {
