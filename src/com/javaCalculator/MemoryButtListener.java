@@ -16,16 +16,12 @@ public class MemoryButtListener implements ActionListener {
         this.memoryClear = memoryFunctionButtons[3];
         this.memoryLoad = memoryFunctionButtons[4];
         this.textField = textField;
-
-
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == clearButton) {
             textField.setText("");
-
         }
         if (e.getSource() == memoryClear) {
             memory = 0;
@@ -33,13 +29,10 @@ public class MemoryButtListener implements ActionListener {
         if (e.getSource() == memorySave) {
             memory = Double.parseDouble(textField.getText());
             textField.setText("");
-
         }
 
         if (e.getSource() == memoryLoad) {
-
             textField.setText(String.valueOf(memory));
-
         }
         if (e.getSource() == deleteButton) {
             if (textField.getText().length() > 1) {

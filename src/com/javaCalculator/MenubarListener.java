@@ -5,12 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenubarListener implements ActionListener {
-     Calculator calculator;
+
+Calculator calculator;
 JMenuItem helpItem;
 JMenuItem aboutItem;
 JMenuItem ItemModeScientific;
 JMenuItem ItemModeNormal;
-
+//pass class into constructor .see the question in stackoverflow .
 MenubarListener(Calculator calculator,JMenuItem helpItem, JMenuItem aboutItem,JMenuItem ItemModeScientific,JMenuItem ItemModeNormal){
     this.calculator = calculator;
     this.helpItem = helpItem;
@@ -18,13 +19,8 @@ MenubarListener(Calculator calculator,JMenuItem helpItem, JMenuItem aboutItem,JM
     this.ItemModeScientific = ItemModeScientific;
     this.ItemModeNormal = ItemModeNormal;
 }
-
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
-
-
         if (e.getSource() == helpItem) {
              new HelpWindow();
         }
@@ -34,7 +30,6 @@ MenubarListener(Calculator calculator,JMenuItem helpItem, JMenuItem aboutItem,JM
         if (e.getSource() == ItemModeScientific) {
             System.out.println("scientific mode");
           calculator.changeFrame2Scientific();
-
         }
         if (e.getSource() == ItemModeNormal) {
             System.out.println("normal mode");

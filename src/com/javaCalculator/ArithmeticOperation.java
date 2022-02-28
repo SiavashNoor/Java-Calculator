@@ -13,7 +13,6 @@ public class ArithmeticOperation {
             case 'l' -> temp = Math.log(num1) / Math.log(num2);
         }
         return temp;
-
     }
 }
 

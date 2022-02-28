@@ -11,7 +11,6 @@ public class FuncButtListener implements ActionListener {
     double temp;
     double num2;
 
-
     JButton addButton, subButton, divideButton, multiplyButton, decButton, equButton, numberPowerOfNumber, factorialNumber,
             numberPowerOfTwo, logarithmBaseNumber, naturalLogarithm, neperNumber, PiNumber, percentOfnumber, squareRoot, multiplicativeInverse;
 

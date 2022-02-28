@@ -1,42 +1,21 @@
 package com.javaCalculator;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
 
-
-
-
 public class Calculator {
-
     JButton[] numberButtons = new JButton[10];
-    JButton[] functionButtons = new JButton[6];
+
     JButton[] memoryFunctionButtons = new JButton[5];
-    JButton addButton;
-    JButton divideButton;
-    JButton subButton;
-    JButton decButton;
-    JButton multiplyButton;
-    JButton deleteButton;
-    JButton equButton;
-    JButton clearButton;
-    JButton memorySave;
-    JButton memoryClear;
-    JButton memoryLoad;
+    JButton clearButton,memorySave,memoryClear,memoryLoad,deleteButton;
+
+    JButton[] functionButtons = new JButton[6];
+    JButton addButton,divideButton,subButton,decButton,multiplyButton,equButton;
 
     JButton[] ScientificButton = new JButton[10];
-    JButton multiplicativeInverse;
-    JButton squareRoot;
-    JButton PiNumber;
-    JButton numberPowerOfTwo;
-    JButton numberPowerOfNumber;
-    JButton percentOfnumber;
-    JButton logarithmBaseNumber;
-    JButton naturalLogarithm;
-    JButton neperNumber;
-    JButton factorialNumber;
-
+    JButton multiplicativeInverse,squareRoot,PiNumber,numberPowerOfTwo,numberPowerOfNumber,percentOfnumber,
+            logarithmBaseNumber,neperNumber,naturalLogarithm,factorialNumber;
 
     JFrame frame;
     JPanel memoryFunctionPanel;
@@ -47,10 +26,7 @@ public class Calculator {
     JMenuBar menuBar;
     JMenu helpMenu;
     JMenu modeMenu;
-    JMenuItem helpItem;
-    JMenuItem ItemModeNormal;
-    JMenuItem ItemModeScientific;
-    JMenuItem aboutItem;
+    JMenuItem helpItem,ItemModeNormal,ItemModeScientific,aboutItem;
 
     ActionListener actionListener;
     ActionListener menubarListener;
@@ -58,37 +34,29 @@ public class Calculator {
 
     Font font = new Font("helvetica", Font.BOLD, 30);
 
-
-
     Calculator() {
-
+        // window icon is set by url .to include image in jar file
         java.net.URL imgURL = getClass().getResource("/com/javaCalculator/calculatorImage.png");
-
         assert imgURL != null;
         ImageIcon icon = new ImageIcon(imgURL);
 
         for (int i = 0; i < 10; i++) {
             numberButtons[i] = new JButton(String.valueOf(i));
             numberButtons[i].setFont(font);
-            numberButtons[i].setBackground(new Color(130, 130, 130));
+            numberButtons[i].setBackground(new Color(0xeae2b7));
             numberButtons[i].setFocusable(false);
             numberButtons[i].setBorder(null);
         }
-
-
         for (int i = 0; i < 6; i++) {
             functionButtons[i] = new JButton();
             functionButtons[i].setFont(font);
-            functionButtons[i].setBackground(new Color(227, 84, 23));
-
+            functionButtons[i].setBackground(new Color(0xfcbf49));
             functionButtons[i].setFocusable(false);
-
         }
-
         for (int i = 0; i < 5; i++) {
             memoryFunctionButtons[i] = new JButton();
             memoryFunctionButtons[i].setFont(new Font("helvetica", Font.BOLD, 20));
-            memoryFunctionButtons[i].setBackground(new Color(222, 37, 4));
+            memoryFunctionButtons[i].setBackground(new Color(0xf77f00));
             memoryFunctionButtons[i].setFocusable(false);
             memoryFunctionButtons[i].setBorder(null);
         }
@@ -118,6 +86,55 @@ public class Calculator {
         memoryClear.setText("MC");
         memoryLoad.setText("ML");
 
+        //////scientific panel components
+        for (int i = 0; i < ScientificButton.length; i++) {
+            ScientificButton[i] = new JButton();
+            ScientificButton[i].setFocusable(false);
+            ScientificButton[i].setFont(new Font("Tahoma", Font.BOLD, 20));
+            ScientificButton[i].setForeground(Color.black);
+            ScientificButton[i].setBackground(new Color(0xfcbf49));
+            ScientificButton[i].setBorder(null);
+        }
+
+        multiplicativeInverse = ScientificButton[0];
+        squareRoot = ScientificButton[1];
+        PiNumber = ScientificButton[2];
+        numberPowerOfTwo = ScientificButton[3];
+        numberPowerOfNumber = ScientificButton[4];
+        percentOfnumber = ScientificButton[5];
+        logarithmBaseNumber = ScientificButton[6];
+        naturalLogarithm = ScientificButton[7];
+        neperNumber = ScientificButton[8];
+        factorialNumber = ScientificButton[9];
+
+
+        //not all fonts support the unicode  the below commented code checks the validated fonts for specified unicode.
+        //this code is not efficient but it works .
+        /*
+          String s = "\u03C0";
+        Font[] fonts = GraphicsEnvironment.
+                getLocalGraphicsEnvironment().getAllFonts();
+        System.out.println("Total fonts: \t" + fonts.length);
+        int count = 0;
+        for (Font font : fonts) {
+            if (font.canDisplayUpTo(s) < 0) {
+                count++;
+                System.out.println(font.getName());
+            }
+        }
+        System.out.println("Compatible fonts: \t" + count);
+        */
+        multiplicativeInverse.setText("1/x");
+        squareRoot.setText("\u221A" + "x"); //radical unicode
+        PiNumber.setText("\u03C0");  //pi number unicode
+        numberPowerOfTwo.setText("<html>x <sup>2</sup></html>");
+        numberPowerOfNumber.setText("<html> x <sup>n</sup></html>");
+        percentOfnumber.setText("%");
+        logarithmBaseNumber.setText("<html> Log<sub>y</sub>x</html>");
+        naturalLogarithm.setText("ln(X)");
+        neperNumber.setText("e");
+        factorialNumber.setText("x!");
+
         menuBar = new JMenuBar();
         modeMenu = new JMenu("Mode");
         helpMenu = new JMenu("Help");
@@ -129,7 +146,6 @@ public class Calculator {
         ItemModeScientific.setMnemonic(KeyEvent.VK_S);
         ItemModeNormal.setMnemonic(KeyEvent.VK_N);
 
-
         modeMenu.add(ItemModeNormal);
         modeMenu.add(ItemModeScientific);
         helpMenu.add(helpItem);
@@ -137,13 +153,12 @@ public class Calculator {
         menuBar.add(modeMenu);
         menuBar.add(helpMenu);
 
-
         textField = new JTextField();
         textField.setEditable(false);
         textField.setFont(new Font("helvetica", Font.BOLD, 40));
         textField.setForeground(Color.white);
         textField.setBounds(10, 10, 390, 60);
-        textField.setBackground(Color.darkGray);
+        textField.setBackground(new Color(0x003049));
         textField.setBorder(null);
 
         memoryFunctionPanel = new JPanel();
@@ -174,58 +189,6 @@ public class Calculator {
         panel.add(numberButtons[2]);
         panel.add(numberButtons[3]);
 
-
-        //////scientific panel components
-        for (int i = 0; i < ScientificButton.length; i++) {
-            ScientificButton[i] = new JButton();
-            ScientificButton[i].setFocusable(false);
-            ScientificButton[i].setFont(new Font("Tahoma", Font.PLAIN, 18));
-            ScientificButton[i].setForeground(Color.black);
-            ScientificButton[i].setBackground(Color.orange);
-            ScientificButton[i].setBorder(null);
-
-        }
-
-        multiplicativeInverse = ScientificButton[0];
-        squareRoot = ScientificButton[1];
-        PiNumber = ScientificButton[2];
-        numberPowerOfTwo = ScientificButton[3];
-        numberPowerOfNumber = ScientificButton[4];
-        percentOfnumber = ScientificButton[5];
-        logarithmBaseNumber = ScientificButton[6];
-        naturalLogarithm = ScientificButton[7];
-        neperNumber = ScientificButton[8];
-        factorialNumber = ScientificButton[9];
-
-
-        multiplicativeInverse.setText("1/x");
-
-        //not all fonts support the unicode  the below commented code checks the validated fonts for specified unicode.
-        //this code is not efficient but it works .
-        /*
-          String s = "\u03C0";
-        Font[] fonts = GraphicsEnvironment.
-                getLocalGraphicsEnvironment().getAllFonts();
-        System.out.println("Total fonts: \t" + fonts.length);
-        int count = 0;
-        for (Font font : fonts) {
-            if (font.canDisplayUpTo(s) < 0) {
-                count++;
-                System.out.println(font.getName());
-            }
-        }
-        System.out.println("Compatible fonts: \t" + count);
-        */
-        squareRoot.setText("\u221A" + "x"); //radical unicode
-        PiNumber.setText("\u03C0");  //pi number unicode
-        numberPowerOfTwo.setText("<html>x <sup>2</sup></html>");
-        numberPowerOfNumber.setText("<html> x <sup>n</sup></html>");
-        percentOfnumber.setText("%");
-        logarithmBaseNumber.setText("<html> Log<sub>y</sub>x</html>");
-        naturalLogarithm.setText("ln(X)");
-        neperNumber.setText("e");
-        factorialNumber.setText("x!");
-
         scientificPanel = new JPanel();
         scientificPanel.setBounds(10, 150, 170, 390);
         scientificPanel.setBackground(Color.darkGray);
@@ -241,15 +204,12 @@ public class Calculator {
         scientificPanel.add(logarithmBaseNumber);
         scientificPanel.add(neperNumber);
         scientificPanel.add(factorialNumber);
-        /////////
-
 
         panel.add(subButton);
         panel.add(decButton);
         panel.add(numberButtons[0]);
         panel.add(equButton);
         panel.add(addButton);
-
 
         actionListener = new NumButtListener(numberButtons, textField);
         for (JButton numberButton : numberButtons) {
@@ -279,14 +239,8 @@ public class Calculator {
         frame.setTitle("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         keyListener = new ButtonsKeyListener(textField);
-
         frame.addKeyListener(keyListener);
-
-
-
         frame.setIconImage(icon.getImage());
-
-
         frame.setLayout(null);
         frame.setSize(420, 600);
         frame.setResizable(false);
@@ -300,7 +254,6 @@ public class Calculator {
 
         frame.setVisible(true);
     }
-
 
     public void changeFrame2Scientific() {
         frame.setSize(600, 600);
@@ -317,7 +270,6 @@ public class Calculator {
         panel.setBounds(10, 150, 390, 390);
         frame.setSize(420, 600);
         frame.remove(scientificPanel);
-
     }
 }
 

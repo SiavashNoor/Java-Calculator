@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 //this class contains the action listener implementation for number buttons.0-9
 public class NumButtListener implements ActionListener {
-
     JButton[] numberButtons = new JButton[10];
     JTextField textField;
 
