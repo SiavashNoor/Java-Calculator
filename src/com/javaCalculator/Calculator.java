@@ -1,8 +1,12 @@
 package com.javaCalculator;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+
+
+
 
 public class Calculator {
 
@@ -53,16 +57,24 @@ public class Calculator {
     KeyListener keyListener;
 
     Font font = new Font("helvetica", Font.BOLD, 30);
-    ImageIcon icon = new ImageIcon("D:\\java_codes\\media\\icon.png");
+
+
 
     Calculator() {
+
+        java.net.URL imgURL = getClass().getResource("/com/javaCalculator/calculatorImage.png");
+
+        assert imgURL != null;
+        ImageIcon icon = new ImageIcon(imgURL);
 
         for (int i = 0; i < 10; i++) {
             numberButtons[i] = new JButton(String.valueOf(i));
             numberButtons[i].setFont(font);
             numberButtons[i].setBackground(new Color(130, 130, 130));
             numberButtons[i].setFocusable(false);
+            numberButtons[i].setBorder(null);
         }
+
 
         for (int i = 0; i < 6; i++) {
             functionButtons[i] = new JButton();
@@ -269,7 +281,12 @@ public class Calculator {
         keyListener = new ButtonsKeyListener(textField);
 
         frame.addKeyListener(keyListener);
+
+
+
         frame.setIconImage(icon.getImage());
+
+
         frame.setLayout(null);
         frame.setSize(420, 600);
         frame.setResizable(false);
@@ -300,6 +317,7 @@ public class Calculator {
         panel.setBounds(10, 150, 390, 390);
         frame.setSize(420, 600);
         frame.remove(scientificPanel);
+
     }
 }
 
