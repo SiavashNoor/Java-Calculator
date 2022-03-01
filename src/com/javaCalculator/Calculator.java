@@ -160,6 +160,7 @@ public class Calculator {
         textField.setBounds(10, 10, 390, 60);
         textField.setBackground(new Color(0x003049));
         textField.setBorder(null);
+        textField.setFocusable(false);
 
         memoryFunctionPanel = new JPanel();
         memoryFunctionPanel.setLayout(new GridLayout(1, 5, 10, 10));
@@ -247,6 +248,7 @@ public class Calculator {
         frame.getContentPane().setBackground(new Color(80, 80, 80));
         frame.setJMenuBar(menuBar);
         frame.setFocusable(true);
+        
 
         frame.add(textField);
         frame.add(memoryFunctionPanel);
