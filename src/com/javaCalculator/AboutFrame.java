@@ -19,8 +19,6 @@ public class AboutFrame  {
     AboutFrame() {
         label1 = new JLabel();
         label1.setText("Find me in these places:");
-
-
         label1.setHorizontalAlignment(JLabel.CENTER);
         label1.setFont(new Font("Helvetica", Font.PLAIN, 15));
         label1.setForeground(Color.darkGray);
@@ -33,6 +31,7 @@ public class AboutFrame  {
         hyperLink1.setHorizontalAlignment(JLabel.CENTER);
         hyperLink1.setFont(new Font("Helvetica", Font.PLAIN, 15));
         hyperLink1.setForeground(Color.blue.darker());
+
         hyperLink1.addMouseListener(new MouseAdapter() {
 
             @Override
@@ -75,7 +74,6 @@ public class AboutFrame  {
                     ex.printStackTrace();
                 }
             }
-
             @Override
             public void mouseEntered (MouseEvent e){
                 // a trick : we can pass this HTML snippet to  the string and make it underlined .
@@ -102,6 +100,5 @@ public class AboutFrame  {
         aboutFrame.add(hyperLink2);
 
         aboutFrame.setVisible(true);
-
     }
 }
